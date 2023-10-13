@@ -1,0 +1,26 @@
+{
+    "id": "B73E62F9",
+    "path": "~/projects/catAPI/api/Dockerfile",
+    "project_path": "api/Dockerfile",
+    "type": "dockerfile",
+    "hash": "0",
+    "contents": "",
+    "dirty": false,
+    "created": 1697211818210.0,
+    "source_on_save": false,
+    "relative_order": 6,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "10,38",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1697214571,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1697214571,
+    "read_only": false,
+    "read_only_alternatives": []
+}

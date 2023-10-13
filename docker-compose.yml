@@ -1,0 +1,56 @@
+version: '3'
+
+networks:
+  dnv-net:
+    name: dnv-net
+
+volumes: 
+  mysql-data:
+
+services:
+  db-service:
+    image: mysql:5.7
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_TCP_PORT: 3307 
+    expose:
+      - "3307"
+    ports:
+      - "3307:3307"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    networks:
+      - dnv-net
+  api-service:
+    build: ./api
+    ports:
+      - 1994:1994
+    depends_on:
+      - db-service
+    networks:
+      - dnv-net
+  dash-service:
+    build: ./app
+    networks:
+      - dnv-net
+  shinyproxy:
+    image: datanovia/shinyproxy
+    container_name: dnv_shinyproxy
+    restart: on-failure
+    build: ./shinyproxy
+    networks:
+      - dnv-net
+    ports:
+      - 8080:8080
+    depends_on:
+      - api-service
+      - db-service
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./shinyproxy-logs/server:/log
+      - ./shinyproxy-logs/container:/container-logs
+      - ./shinyproxy/application.yml:/opt/shinyproxy/application.yml

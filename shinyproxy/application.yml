@@ -1,0 +1,25 @@
+proxy:
+  title: ShinyProxy
+  port: 8080
+  authentication: simple
+  admin-groups: admins
+  users:
+  - name: thiago
+    password: 123
+    groups: admins
+  docker:
+      internal-networking: true
+      container-network: dnv-net
+  # change this route to your work directory, use absolute path
+  work-directory: C:/Users/'Thiago Miranda'/Documents/projects/catAPI
+  specs:
+  - id: altura
+    display-name: Calcule sua altura pela TRI
+    description: Aplicação exemplo de testes adaptativos computadorizados
+    container-cmd: ["/usr/bin/shiny-server"]
+    container-image: catapi-dash-service:latest
+    container-network: dnv-net
+
+logging:
+  file:
+    /log/shinyproxy.log

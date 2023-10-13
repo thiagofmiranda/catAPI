@@ -1,0 +1,512 @@
+"GET",
+url = paste0(url,url_role),
+content_type("image/png"),
+accept("image/png"))
+content(response)
+}
+theta_plot()
+start_test <- function(min_items=5,max_items=10){
+url <- "http://127.0.0.1:80/"
+url_role <- "new_test"
+payload <- toJSON(auto_unbox = T,
+list(
+min_items = min_items,
+max_items = max_items
+))
+encode <- "json"
+response <- VERB(
+"POST",
+url = paste0(url,url_role),
+body = payload,
+content_type("application/json"),
+accept("application/json"), encode = encode)
+fromJSON(content(response, "text"))
+}
+answer_question <- function(response){
+url <- "http://127.0.0.1:80/"
+url_role <- "answer_question"
+payload <- toJSON(auto_unbox = T,
+list(
+response = response
+))
+encode <- "json"
+response <- VERB(
+"POST",
+url = paste0(url,url_role),
+body = payload,
+content_type("application/json"),
+accept("application/json"), encode = encode)
+fromJSON(content(response, "text"))
+}
+theta_plot <- function(){
+url <- "http://127.0.0.1:80/"
+url_role <- "theta_plot"
+encode <- "json"
+response <- VERB(
+"GET",
+url = paste0(url,url_role),
+content_type("image/png"),
+accept("image/png"))
+content(response)
+}
+start_test()
+answer_question("Não")
+start_test()
+answer_question("Não")
+start_test()
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+start_test()
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+start_test()
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+results <- function(){
+url <- "http://127.0.0.1:80/"
+url_role <- "results"
+encode <- "json"
+response <- VERB(
+"GET",
+url = paste0(url,url_role),
+content_type("application/json"),
+accept("application/json"))
+content(response)
+}
+results()
+results <- function(){
+url <- "http://127.0.0.1:80/"
+url_role <- "results"
+encode <- "json"
+response <- VERB(
+"GET",
+url = paste0(url,url_role),
+content_type("application/json"),
+accept("application/json"))
+fromJSON(content(response, "text"))
+}
+results()
+start_test <- function(min_items=5,max_items=10){
+url <- "http://127.0.0.1:80/"
+url_role <- "new_test"
+payload <- toJSON(auto_unbox = T,
+list(
+min_items = min_items,
+max_items = max_items
+))
+encode <- "json"
+response <- VERB(
+"POST",
+url = paste0(url,url_role),
+body = payload,
+content_type("application/json"),
+accept("application/json"), encode = encode)
+fromJSON(content(response, "text"))
+}
+answer_question <- function(response){
+url <- "http://127.0.0.1:80/"
+url_role <- "answer_question"
+payload <- toJSON(auto_unbox = T,
+list(
+response = response
+))
+encode <- "json"
+response <- VERB(
+"POST",
+url = paste0(url,url_role),
+body = payload,
+content_type("application/json"),
+accept("application/json"), encode = encode)
+fromJSON(content(response, "text"))
+}
+results <- function(){
+url <- "http://127.0.0.1:80/"
+url_role <- "results"
+encode <- "json"
+response <- VERB(
+"GET",
+url = paste0(url,url_role),
+content_type("application/json"),
+accept("application/json"))
+fromJSON(content(response, "text"))
+}
+results()
+library(httr)
+library(jsonlite)
+start_test <- function(min_items=5,max_items=10){
+url <- "http://127.0.0.1:80/"
+url_role <- "new_test"
+payload <- toJSON(auto_unbox = T,
+list(
+min_items = min_items,
+max_items = max_items
+))
+encode <- "json"
+response <- VERB(
+"POST",
+url = paste0(url,url_role),
+body = payload,
+content_type("application/json"),
+accept("application/json"), encode = encode)
+fromJSON(content(response, "text"))
+}
+answer_question <- function(response){
+url <- "http://127.0.0.1:80/"
+url_role <- "answer_question"
+payload <- toJSON(auto_unbox = T,
+list(
+response = response
+))
+encode <- "json"
+response <- VERB(
+"POST",
+url = paste0(url,url_role),
+body = payload,
+content_type("application/json"),
+accept("application/json"), encode = encode)
+fromJSON(content(response, "text"))
+}
+results <- function(){
+url <- "http://127.0.0.1:80/"
+url_role <- "results"
+encode <- "json"
+response <- VERB(
+"GET",
+url = paste0(url,url_role),
+content_type("application/json"),
+accept("application/json"))
+fromJSON(content(response, "text"))
+}
+res <- results()
+res
+start_test()
+answer_question("Não")
+res <- results()
+res
+res$thetasSEhigh
+data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+plot <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist,group=1))+
+geom_line(linewidth=0.7)+
+ylab("Theta")+xlab("Item")+
+geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylim(-3,3)+
+theme_bw()
+}
+plot_theta <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist,group=1))+
+geom_line(linewidth=0.7)+
+ylab("Theta")+xlab("Item")+
+geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylim(-3,3)+
+theme_bw()
+}
+plot_theta()
+library(ggplot)
+plot_theta <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist,group=1))+
+geom_line(linewidth=0.7)+
+ylab("Theta")+xlab("Item")+
+geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylim(-3,3)+
+theme_bw()
+}
+plot_theta()
+library(ggplot)
+library(ggplot2)
+plot_theta <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist,group=1))+
+geom_line(linewidth=0.7)+
+ylab("Theta")+xlab("Item")+
+geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylim(-3,3)+
+theme_bw()
+}
+plot_theta()
+plot_theta <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist,group=1))+
+geom_line(group=1,linewidth=0.7)+
+ylab("Theta")+xlab("Item")+
+geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylim(-3,3)+
+theme_bw()
+}
+plot_theta()
+plot_theta <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist, group=1))+
+geom_line(linewidth=0.7)+
+geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylab("Theta")+xlab("Item")+
+ylim(-3,3)+
+theme_bw()
+}
+plot_theta()
+plot_theta <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist, group=1))+
+geom_line(linewidth=0.7)+
+#geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylab("Theta")+xlab("Item")+
+ylim(-3,3)+
+theme_bw()
+}
+plot_theta()
+plot_theta <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist, group=1))+
+#geom_line(linewidth=0.7)+
+geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylab("Theta")+xlab("Item")+
+ylim(-3,3)+
+theme_bw()
+}
+plot_theta()
+answer_question("Não")
+plot_theta <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist, group=1))+
+geom_line(linewidth=0.7)+
+geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylab("Theta")+xlab("Item")+
+ylim(-3,3)+
+theme_bw()
+}
+plot_theta()
+results()
+library(httr)
+library(jsonlite)
+library(ggplot2)
+start_test <- function(min_items=5,max_items=10){
+url <- "http://127.0.0.1:80/"
+url_role <- "new_test"
+payload <- toJSON(auto_unbox = T,
+list(
+min_items = min_items,
+max_items = max_items
+))
+encode <- "json"
+response <- VERB(
+"POST",
+url = paste0(url,url_role),
+body = payload,
+content_type("application/json"),
+accept("application/json"), encode = encode)
+fromJSON(content(response, "text"))
+}
+answer_question <- function(response){
+url <- "http://127.0.0.1:80/"
+url_role <- "answer_question"
+payload <- toJSON(auto_unbox = T,
+list(
+response = response
+))
+encode <- "json"
+response <- VERB(
+"POST",
+url = paste0(url,url_role),
+body = payload,
+content_type("application/json"),
+accept("application/json"), encode = encode)
+fromJSON(content(response, "text"))
+}
+results <- function(){
+url <- "http://127.0.0.1:80/"
+url_role <- "results"
+encode <- "json"
+response <- VERB(
+"GET",
+url = paste0(url,url_role),
+content_type("application/json"),
+accept("application/json"))
+fromJSON(content(response, "text"))
+}
+plot_theta <- function(){
+res <- results()
+df <- data.frame(
+item=factor(res$ites_answered),
+theta_hist=res$theta_hist[-1],
+theta_se_hist=res$theta_se_hist[-1],
+thetasSEhigh=(res$theta_hist+res$theta_se_hist)[-1],
+thetasSElow=(res$theta_hist-res$theta_se_hist)[-1])
+df|>
+ggplot(aes(x=item,y=theta_hist, group=1))+
+geom_line(linewidth=0.7)+
+geom_ribbon(aes(ymin=thetasSElow, ymax=thetasSEhigh),alpha=0.3)+
+scale_x_discrete(expand = c(0.01,0.01))+
+ylab("Theta")+xlab("Item")+
+ylim(-3,3)+
+theme_bw()
+}
+start_test()
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+answer_question("Não")
+results()
+plot_theta()
+shiny::runApp('app')
+runApp('app')
+runApp('app')
+runApp('app')
+runApp('app')
+api_start <- start_test()
+api_start
+as.character(api_start$question_alternatives)
+runApp('app')
+item <- api_start$question
+choices <- list(as.character(api_start$question_alternatives))
+item
+choices
+names(choices) <- as.character(api_start$question_alternatives)
+choices <- as.character(api_start$question_alternatives)
+names(choices) <- as.character(api_start$question_alternatives)
+choices
+choices <- as.character(api_start$question_alternatives)
+names(choices) <- choices
+as.list(choices)
+runApp('app')
+runApp('app')
+runApp('app')
+api_start <- answer_question("Não")#answer_question(response)
+api_start
+api_answer_question <- answer_question("Não")#answer_question(response)
+choices <- as.character(api_answer_question$next_question_alternatives)
+names(choices) <- choices
+choices
+cat(api_answer_question$ites_answered)
+runApp('app')
+runApp('app')
+api_answer_question
+runApp('app')
+runApp('app')
+plot_theta()
+runApp('app')
+install.packages("shinydashboardPlus")
+library(shinydashboardPlus) # <-- Change this line to: library(semantic.dashboard)
+?boxPad
+runApp('app')
+dashboardBody
+?dashboardBody
+?fluidRow
+?box
+?shinydashboard::box
+runApp('app')
+plumber::plumb(file='api/api.R')$run()
+runApp('app')

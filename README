@@ -1,0 +1,20 @@
+# Orquestrando
+docker-compose up -d shinyproxy
+
+# Na primeira vez dará um erro por não há dados no db-service
+# Deve-se primeiro logar no container db-service e rodar os comandos do arquivo mysql-data/altura.sql
+
+docker-compose up -d shinyproxy
+
+# Antes de rodar o serviço de API, é necessário criar as tabelas no serviço no db-service
+
+
+
+
+# Building the API
+cd api
+docker build -t catapi-api-service .
+
+# Building the APP
+cd app
+docker build -t catapi-dash-service .
