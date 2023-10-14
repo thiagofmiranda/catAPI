@@ -4,12 +4,9 @@ networks:
   dnv-net:
     name: dnv-net
 
-volumes: 
-  mysql-data:
-
 services:
   db-service:
-    image: mysql:5.7
+    build: ./db
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
@@ -22,7 +19,7 @@ services:
     ports:
       - "3307:3307"
     volumes:
-      - mysql-data:/var/lib/mysql
+      - ./data:/var/lib/mysql
     networks:
       - dnv-net
   api-service:
@@ -51,6 +48,4 @@ services:
       - db-service
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./shinyproxy-logs/server:/log
-      - ./shinyproxy-logs/container:/container-logs
       - ./shinyproxy/application.yml:/opt/shinyproxy/application.yml
