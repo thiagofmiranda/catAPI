@@ -6,6 +6,8 @@ networks:
 
 services:
   db-service:
+    image: catapi-db-service
+    container_name: catapi-db-service
     build: ./db
     command: --default-authentication-plugin=mysql_native_password
     environment:
@@ -23,6 +25,8 @@ services:
     networks:
       - dnv-net
   api-service:
+    image: catapi-api-service
+    container_name: catapi-api-service
     build: ./api
     ports:
       - 1994:1994
@@ -31,12 +35,14 @@ services:
     networks:
       - dnv-net
   dash-service:
+    image: catapi-dash-service
+    container_name: catapi-dash-service
     build: ./app
     networks:
       - dnv-net
   shinyproxy:
-    image: datanovia/shinyproxy
-    container_name: dnv_shinyproxy
+    image: catapi-shinyproxy-service
+    container_name: catapi-shinyproxy-service
     restart: on-failure
     build: ./shinyproxy
     networks:
