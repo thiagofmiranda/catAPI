@@ -39,7 +39,7 @@ sudo chmod 666 /var/run/docker.sock
 docker-compose version
 
 ec2-54-175-110-152.compute-1.amazonaws.com
-ec2-user
+ubuntu
 
 
 
